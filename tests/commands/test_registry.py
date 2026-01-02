@@ -5,9 +5,9 @@ from lazyverdi.commands import STARTUP_COMMANDS, format_error_message
 
 def test_startup_commands_defined() -> None:
     """Test that all startup commands are defined."""
-    assert len(STARTUP_COMMANDS) == 6
+    assert len(STARTUP_COMMANDS) == 5
     assert "panel-1" in STARTUP_COMMANDS
-    assert "panel-6" in STARTUP_COMMANDS
+    assert "panel-5" in STARTUP_COMMANDS
 
 
 def test_startup_commands_structure() -> None:

@@ -1,6 +1,6 @@
 [project]
 name = "lazyverdi"
-version = "1.0.0"
+version = "1.0.1"
 description = "Keyboard-driven TUI frontend for AiiDA verdi CLI"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -15,6 +15,7 @@ classifiers = [
 dependencies = [
     "aiida-core>=2.7.0,<3.0",
     "textual>=0.50.0,<1.0",
+    "pyperclip>=1.8.0",
 ]
 
 [project.optional-dependencies]

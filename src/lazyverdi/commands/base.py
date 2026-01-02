@@ -1,18 +1,39 @@
 """Base command wrapper for verdi commands."""
 
 from collections.abc import Callable
-from typing import Any
+from typing import Any, Optional
 
+from aiida.cmdline.commands.cmd_calcjob import verdi_calcjob
 from aiida.cmdline.commands.cmd_code import code_list
 from aiida.cmdline.commands.cmd_computer import computer_list
 from aiida.cmdline.commands.cmd_config import verdi_config_list
 from aiida.cmdline.commands.cmd_daemon import status as daemon_status
 from aiida.cmdline.commands.cmd_group import group_list
 from aiida.cmdline.commands.cmd_node import node_list
+from aiida.cmdline.commands.cmd_plugin import plugin_list
 from aiida.cmdline.commands.cmd_presto import verdi_presto
 from aiida.cmdline.commands.cmd_process import process_list
 from aiida.cmdline.commands.cmd_profile import profile_list
 from aiida.cmdline.commands.cmd_storage import storage_info
+
+from .formatters import (
+    format_config_list,
+    format_daemon_status,
+    format_process_list,
+    format_profile_list,
+    format_storage_info,
+    format_table_output,
+    no_format,
+)
+from .parsers import (
+    parse_calcjob_help,
+    parse_code_list,
+    parse_computer_list,
+    parse_group_list,
+    parse_node_list,
+    parse_plugin_list,
+    parse_process_list,
+)
 
 
 def get_aiida_status() -> str:
@@ -114,30 +135,48 @@ def get_aiida_status() -> str:
     return "\n".join(output_lines)
 
 
-# Panel configurations with tabs: panel_id -> list of (tab_name, command_func, args)
-PANEL_TABS: dict[str, list[tuple[str, Callable[..., Any], list[str]]]] = {
-    "panel-1": [
-        ("computer", computer_list, []),
-        ("code", code_list, []),
-    ],
-    "panel-2": [
-        ("process", process_list, []),
-    ],
-    "panel-3": [
-        ("group", group_list, []),
-        ("node", node_list, []),
-    ],
+# Panel configurations with tabs for TextArea-based panels
+# Format: panel_id -> list of (tab_name, command_func, args, formatter)
+PANEL_TABS: dict[
+    str, list[tuple[str, Callable[..., Any], list[str], Optional[Callable[[str], str]]]]
+] = {
     "panel-4": [
-        ("config", verdi_config_list, ["--"]),
-        ("profile", profile_list, []),
+        ("config", verdi_config_list, ["--"], format_config_list),
+        ("profile", profile_list, [], format_profile_list),
     ],
     "panel-5": [
-        ("presto", verdi_presto, ["--help"]),
+        ("status", get_aiida_status, [], no_format),
+        ("daemon", daemon_status, [], format_daemon_status),
+        ("storage", storage_info, [], format_storage_info),
     ],
-    "panel-6": [
-        ("status", get_aiida_status, []),
-        ("daemon", daemon_status, []),
-        ("storage", storage_info, []),
+}
+
+# Table panel configurations for DataTable-based panels
+# Format: panel_id -> list of (tab_name, command_func, args, formatter, parser)
+TABLE_TABS: dict[
+    str,
+    list[
+        tuple[
+            str,
+            Callable[..., Any],
+            list[str],
+            Optional[Callable[[str], str]],
+            Callable[[str], dict[str, Any]],
+        ]
+    ],
+] = {
+    "panel-1": [
+        ("computer", computer_list, [], format_table_output, parse_computer_list),
+        ("code", code_list, [], format_table_output, parse_code_list),
+        ("plugin", plugin_list, [], format_table_output, parse_plugin_list),
+    ],
+    "panel-2": [
+        ("process", process_list, [], format_process_list, parse_process_list),
+        ("calcjob", verdi_calcjob, ["--help"], no_format, parse_calcjob_help),
+    ],
+    "panel-3": [
+        ("group", group_list, [], format_table_output, parse_group_list),
+        ("node", node_list, [], format_table_output, parse_node_list),
     ],
 }
 
@@ -145,9 +184,16 @@ PANEL_TABS: dict[str, list[tuple[str, Callable[..., Any], list[str]]]] = {
 # This is needed because VerdiCommand objects need to be invoked through
 # the main verdi command to have proper context (ctx.obj) set up
 VERDI_COMMAND_PATHS: dict[int, list[str]] = {
-    id(computer_list): ["computer", "list"],
+    id(computer_list): [
+        "computer",
+        "list",
+        "-r",
+        "-a",
+    ],  # Use -a to avoid session issues with hide lambda
     id(code_list): ["code", "list"],
+    id(plugin_list): ["plugin", "list"],
     id(process_list): ["process", "list"],
+    id(verdi_calcjob): ["calcjob"],
     id(verdi_config_list): ["config", "list"],
     id(profile_list): ["profile", "list"],
     id(group_list): ["group", "list"],
@@ -166,8 +212,7 @@ STARTUP_COMMANDS: dict[str, tuple[Callable[..., Any], list[str]]] = {
     "panel-2": (process_list, []),
     "panel-3": (group_list, []),
     "panel-4": (profile_list, []),
-    "panel-5": (verdi_presto, ["--help"]),
-    "panel-6": (get_aiida_status, []),
+    "panel-5": (get_aiida_status, []),
 }
 
 

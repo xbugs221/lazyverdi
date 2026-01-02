@@ -17,8 +17,8 @@ class CommandPanel(VerticalScroll):
 
     def compose(self) -> ComposeResult:
         """Create child widgets."""
-        yield Static("[1] computer/code/plugin", classes="command-category")
-        yield Static("[2] process/calcjob", classes="command-category")
-        yield Static("[3] group/node/restapi", classes="command-category")
-        yield Static("[4] config/profile", classes="command-category")
-        yield Static("[5] presto/quicksetup", classes="command-category")
+        yield Static("[1] computer / code / plugin", classes="command-category")
+        yield Static("[2] process / calcjob", classes="command-category")
+        yield Static("[3] group / node / restapi", classes="command-category")
+        yield Static("[4] config / profile", classes="command-category")
+        yield Static("[5] presto / quicksetup", classes="command-category")

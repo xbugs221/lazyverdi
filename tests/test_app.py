@@ -30,7 +30,6 @@ async def test_app_compose() -> None:
         assert app.query_one("#panel-3")
         assert app.query_one("#panel-4")
         assert app.query_one("#panel-5")
-        assert app.query_one("#panel-6")
 
 
 @pytest.mark.asyncio
@@ -40,10 +39,12 @@ async def test_app_focus_panel_actions() -> None:
     async with app.run_test() as pilot:
         await pilot.pause()
 
-        # Test panel 3
+        # Test panel 3 (TablePanel delegates focus to internal DataTable)
         await pilot.press("3")
         await pilot.pause()
-        assert app.query_one("#panel-3").has_focus
+        panel_3 = app.query_one("#panel-3")
+        # Check that panel or its children have focus
+        assert panel_3.has_focus or any(child.has_focus for child in panel_3.children)
 
         # Test panel 4
         await pilot.press("4")
@@ -55,10 +56,10 @@ async def test_app_focus_panel_actions() -> None:
         await pilot.pause()
         assert app.query_one("#panel-5").has_focus
 
-        # Test panel 6 (also tests _reset_left_panel_sizes)
-        await pilot.press("6")
+        # Test panel 5 (also tests _reset_left_panel_sizes)
+        await pilot.press("5")
         await pilot.pause()
-        assert app.query_one("#panel-6").has_focus
+        assert app.query_one("#panel-5").has_focus
 
 
 @pytest.mark.asyncio
