@@ -11,6 +11,8 @@
 
 键盘驱动的 AiiDA verdi 命令 TUI 前端，让你像用 lazygit 一样优雅地管理 AiiDA
 
+<img width="1440" height="869" alt="final" src="https://github.com/user-attachments/assets/e6bcfd73-1caa-4d53-8d23-32ea1d2224af" />
+
 ## 为什么做这个
 
 verdi 命令行的几个痛点：
