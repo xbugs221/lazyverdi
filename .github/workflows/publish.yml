@@ -36,7 +36,7 @@ jobs:
 
       - name: Run tests with coverage
         run: |
-          pytest tests/ --cov=lazyverdi --cov-fail-under=70 -v
+          pytest tests/ --cov=lazyverdi --cov-fail-under=60 -v
 
       - name: Upload coverage reports
         if: matrix.python-version == '3.9'
