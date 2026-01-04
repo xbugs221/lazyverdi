@@ -11,6 +11,9 @@
 
 A keyboard-driven TUI frontend for AiiDA verdi commands, manage AiiDA as elegantly as you use lazygit
 
+<img width="1440" height="869" alt="final" src="https://github.com/user-attachments/assets/e6bcfd73-1caa-4d53-8d23-32ea1d2224af" />
+
+
 ## Why this project
 
 Pain points of verdi command line:
