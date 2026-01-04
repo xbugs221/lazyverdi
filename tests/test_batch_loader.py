@@ -1,11 +1,10 @@
 """Test batch data loader functionality."""
 
 import pytest
-
 from lazyverdi.core.batch_loader import load_all_startup_data, load_tab_data
 
 
-def test_load_all_startup_data():
+def test_load_all_startup_data() -> None:
     """Test that batch loading returns expected structure."""
     # This is a smoke test - may fail if no AiiDA profile is configured
     try:
@@ -35,7 +34,7 @@ def test_load_all_startup_data():
         pytest.skip("AiiDA not configured")
 
 
-def test_load_tab_data():
+def test_load_tab_data() -> None:
     """Test lazy loading of individual tab data."""
     from aiida.cmdline.commands.cmd_computer import computer_list
 

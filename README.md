@@ -1,13 +1,15 @@
 # lazyverdi
 
+
+| ![PyPI](https://img.shields.io/pypi/v/lazyverdi)<br>                        | ![Python](https://img.shields.io/pypi/pyversions/lazyverdi)                          | ![Downloads](https://img.shields.io/pypi/dm/lazyverdi)                                    |
+| --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------- |
+| ![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen) | ![Ruff](https://img.shields.io/badge/lint-ruff-blue)                                 | ![mypy](https://img.shields.io/badge/type%20checker-mypy-blue)                            |
+| ![License](https://img.shields.io/github/license/xbugs221/lazyverdi)    | ![CI](https://github.com/xbugs221/lazyverdi/actions/workflows/publish.yml/badge.svg) | ![codecov](https://codecov.io/gh/xbugs221/lazyverdi/graph/badge.svg?token=8C8PVUV6UD) |
+
+
 [中文文档](README-CN.md)
 
 A keyboard-driven TUI frontend for AiiDA verdi commands, manage AiiDA as elegantly as you use lazygit
-
-| PyPI status | ![PyPI](https://img.shields.io/pypi/v/lazyverdi)<br>                        | ![Python](https://img.shields.io/pypi/pyversions/lazyverdi)                          | ![Downloads](https://img.shields.io/pypi/dm/lazyverdi)                                    |
-| ------------ | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------- |
-| Style | ![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen) | ![Ruff](https://img.shields.io/badge/lint-ruff-blue)                                 | ![mypy](https://img.shields.io/badge/type%20checker-mypy-blue)                            |
-| Build status | ![License](https://img.shields.io/github/license/xbugs221/lazyverdi)    | ![CI](https://github.com/xbugs221/lazyverdi/actions/workflows/publish.yml/badge.svg) | ![codecov](https://codecov.io/gh/xbugs221/lazyverdi/graph/badge.svg?token=8C8PVUV6UD) |
 
 ## Why this project
 

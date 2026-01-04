@@ -1,15 +1,15 @@
 # lazyverdi
 
+
+| ![PyPI](https://img.shields.io/pypi/v/lazyverdi)                            | ![Python](https://img.shields.io/pypi/pyversions/lazyverdi)                               | ![Downloads](https://img.shields.io/pypi/dm/lazyverdi)                               |
+| --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| ![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen) | ![Ruff](https://img.shields.io/badge/lint-ruff-blue)                                      | ![mypy](https://img.shields.io/badge/type%20checker-mypy-blue)                       |
+| ![License](https://img.shields.io/github/license/xbugs221/lazyverdi)        | ![codecov](https://codecov.io/gh/xbugs221/lazyverdi/graph/badge.svg?token=8C8PVUV6UD)<br> | ![CI](https://github.com/xbugs221/lazyverdi/actions/workflows/publish.yml/badge.svg) |
+
+
 [English Documentation](README.md)
 
 键盘驱动的 AiiDA verdi 命令 TUI 前端，让你像用 lazygit 一样优雅地管理 AiiDA
-
-
-| pypi 状态 | ![PyPI](https://img.shields.io/pypi/v/lazyverdi)                            | ![Python](https://img.shields.io/pypi/pyversions/lazyverdi)                               | ![Downloads](https://img.shields.io/pypi/dm/lazyverdi)                               |
-| ------- | --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| 风格      | ![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen) | ![Ruff](https://img.shields.io/badge/lint-ruff-blue)                                      | ![mypy](https://img.shields.io/badge/type%20checker-mypy-blue)                       |
-| 构建状态    | ![License](https://img.shields.io/github/license/xbugs221/lazyverdi)        | ![codecov](https://codecov.io/gh/xbugs221/lazyverdi/graph/badge.svg?token=8C8PVUV6UD)<br> | ![CI](https://github.com/xbugs221/lazyverdi/actions/workflows/publish.yml/badge.svg) |
-
 
 ## 为什么做这个
 

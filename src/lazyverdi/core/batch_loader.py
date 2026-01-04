@@ -4,19 +4,12 @@ This module provides a mechanism to load all panel data in a single database ses
 avoiding SQLAlchemy session conflicts while minimizing startup time.
 """
 
-from typing import Any, Optional
+from typing import Any
 
-from aiida.cmdline.commands.cmd_calcjob import verdi_calcjob
-from aiida.cmdline.commands.cmd_code import code_list
 from aiida.cmdline.commands.cmd_computer import computer_list
 from aiida.cmdline.commands.cmd_config import verdi_config_list
-from aiida.cmdline.commands.cmd_daemon import status as daemon_status
 from aiida.cmdline.commands.cmd_group import group_list
-from aiida.cmdline.commands.cmd_node import node_list
-from aiida.cmdline.commands.cmd_plugin import plugin_list
 from aiida.cmdline.commands.cmd_process import process_list
-from aiida.cmdline.commands.cmd_profile import profile_list
-from aiida.cmdline.commands.cmd_storage import storage_info
 from click.testing import CliRunner
 
 from lazyverdi.commands.base import get_aiida_status
@@ -99,7 +92,7 @@ def load_all_startup_data() -> dict[str, dict[str, Any]]:
 
     # Define commands for each panel's default tab
     # Only load the first (default) tab for each panel at startup
-    commands_to_run = [
+    commands_to_run: list[tuple[str, str, Any, list[str]]] = [
         ("panel-1", "computer", computer_list, []),  # -r flag already in VERDI_COMMAND_PATHS
         ("panel-2", "process", process_list, []),
         ("panel-3", "group", group_list, []),

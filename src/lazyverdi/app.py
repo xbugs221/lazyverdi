@@ -445,9 +445,12 @@ class LazyVerdiApp(App):
                         if panel_id in ["panel-1", "panel-2", "panel-3"]:
                             table_panel = self.query_one(f"#{panel_id}", TablePanel)
                             # Get parser and formatter for this tab
-                            cmd_func, args, formatter, parser = (
-                                table_panel.get_current_tab_command()
-                            )
+                            (
+                                cmd_func,
+                                args,
+                                formatter,
+                                parser,
+                            ) = table_panel.get_current_tab_command()
 
                             # Apply formatter if provided
                             stdout_output = (
@@ -583,9 +586,12 @@ class LazyVerdiApp(App):
                     try:
                         if panel_id in ["panel-1", "panel-2", "panel-3"]:
                             table_panel = self.query_one(f"#{panel_id}", TablePanel)
-                            cmd_func, args, formatter, parser = (
-                                table_panel.get_current_tab_command()
-                            )
+                            (
+                                cmd_func,
+                                args,
+                                formatter,
+                                parser,
+                            ) = table_panel.get_current_tab_command()
                             await self._refresh_table_panel(
                                 panel_id, cmd_func, args, formatter, parser
                             )
